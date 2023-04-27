@@ -1,9 +1,10 @@
 import './App.css';
+import Userform from './Userform';
 
 function App() {
   return (
     <div className="App">
-      Boilerplate
+      <Userform />
     </div>
   );
 }
