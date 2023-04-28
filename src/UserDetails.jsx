@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from "@mui/styles";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material/';
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
+
 
 function UserDetails() {
   const [data, setData] = useState([]);
@@ -15,17 +10,15 @@ function UserDetails() {
     const fetchData = async () => {
       const response = await fetch('http://127.0.0.1:8000/booking/');
       const json = await response.json();
-      console.log(json)
       setData(json.data);
     };
     fetchData();
   }, []);
 
-  const classes = useStyles();
 
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
