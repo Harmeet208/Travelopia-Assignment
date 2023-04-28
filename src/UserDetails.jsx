@@ -18,20 +18,21 @@ function UserDetails() {
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="simple table">
+      <h1>User Details</h1>
+      <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Budget</TableCell>
             <TableCell>Country</TableCell>
-            <TableCell>Travellers</TableCell>
+            <TableCell>Travelers</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
+            <TableRow key={row.email}>
+              <TableCell>
                 {row.name}
               </TableCell>
               <TableCell>{row.email}</TableCell>
