@@ -47,11 +47,11 @@ export default function Userform() {
         }
         if (name && email && country && currency && travelers) {
             const data = {
-                email: email,
                 name: name,
-                country: country,
-                currency: currency,
-                travellers: travelers
+                email: email,
+                destination_country: country,
+                budget_per_person: currency,
+                number_of_traveller: travelers
             };
             
             const response = await fetch('http://127.0.0.1:8000/booking/', {
@@ -61,7 +61,7 @@ export default function Userform() {
                 },
                 body: JSON.stringify(data)
             })
-            if(response.status!==200){
+            if(response.status===500){
                 alert('Some Unknown Error Occurred');
                 return;
             }
@@ -70,7 +70,7 @@ export default function Userform() {
                 alert(json.message);
             }
             if(json?.code===200){
-                history('/details')
+                history('/details');
             }
         }
     };
@@ -104,12 +104,12 @@ export default function Userform() {
                     helperText={emailError ? "Invalid email address" : ""}
                 />
                 <FormControl style={{marginTop:'10px'}} sx={{ minWidth: 224 }} error={countryError}>
-                    <InputLabel>Select The Country</InputLabel>
+                    <InputLabel>Where do you want to go?</InputLabel>
                     <Select
                         labelId="demo-simple-select-filled-label"
                         id="demo-simple-select-filled"
                         value={country}
-                        label="Select The Country"
+                        label="Where do you want to go?"
                         onChange={(e) => {
                             setCountry(e.target.value);
                             setCountryError(false);
@@ -125,7 +125,7 @@ export default function Userform() {
                 <TextField
                     style={{marginTop:'10px'}}
                     id="budget"
-                    label="Budget"
+                    label="Budget per Person"
                     value={currency}
                     onChange={(e) => {
                         setCurrency(e.target.value);
@@ -136,15 +136,15 @@ export default function Userform() {
                 />
                 <TextField
                     style={{marginTop:'10px'}}
-                    id="travelers"
-                    label="Travelers"
+                    id="travellers"
+                    label="Number of Travellers"
                     value={travelers}
                     onChange={(e) => {
                         setTravelers(e.target.value);
                         setTravelersError(false);
                     }}
                     error={travelersError}
-                    helperText={travelersError ? "No of Travelers are required" : ""}
+                    helperText={travelersError ? "Number of Travellers are required" : ""}
                 />
                 <Button type="submit" variant="contained" color="primary" style={{marginTop:'10px'}}>
                     Submit

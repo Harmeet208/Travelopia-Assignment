@@ -24,21 +24,19 @@ function UserDetails() {
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
-            <TableCell>Budget</TableCell>
-            <TableCell>Country</TableCell>
-            <TableCell>Travelers</TableCell>
+            <TableCell>Destination Country</TableCell>
+            <TableCell>Budget Per Person</TableCell>
+            <TableCell>Number of Traveller</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row) => (
             <TableRow key={row.email}>
-              <TableCell>
-                {row.name}
-              </TableCell>
+              <TableCell>{row.name}</TableCell>
               <TableCell>{row.email}</TableCell>
-              <TableCell>{row.currency}</TableCell>
-              <TableCell>{row.country}</TableCell>
-              <TableCell>{row.travellers}</TableCell>
+              <TableCell>{row.destination_country}</TableCell>
+              <TableCell>{row.budget_per_person}</TableCell>
+              <TableCell>{row.number_of_traveller}</TableCell>
             </TableRow>
           ))}
         </TableBody>
